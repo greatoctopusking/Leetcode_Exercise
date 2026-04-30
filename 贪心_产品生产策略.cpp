@@ -3,26 +3,29 @@
 #include<stack>
 using namespace std;
 
-int n;
-
 int main() {
-	cin >> n;
-	vector<int> c(n, 0), y(n, 0);
-	for (int i = 0; i < n; i++) {
-		cin >> c[i];
-	}
-	for (int i = 0; i < n; i++) {
-		cin >> y[i];
-	}
-
-	int idx = 0;
-	int res = 0;
-	for (int i = 0; i < n; i++) {
-		if (c[idx] + i - idx >= c[i]) {
-			idx = i;
+	int m, n;
+	scanf("%d", &m);
+	while (m--) {
+		scanf("%d", &n);
+		vector<long long> c(n, 0), y(n, 0);
+		for (int i = 0; i < n; i++) {
+			scanf("%lld", &c[i]);
 		}
-		res += y[i] * (c[idx] + i - idx);
+		for (int i = 0; i < n; i++) {
+			scanf("%lld", &y[i]);
+		}
+
+		int idx = 0;
+		long long res = 0;
+		for (int i = 0; i < n; i++) {
+			if (c[idx] + i - idx >= c[i]) {
+				idx = i;
+			}
+			res += y[i] * (c[idx] + i - idx);
+		}
+		printf("%lld\n", res);
 	}
-	cout << res;
+	
 	return 0;
 }
